@@ -1,162 +1,398 @@
-# 🤖 Local AI SharePoint Assistant
+# SharePoint AI Assistant - Enhanced Version
 
-**Talk to your SharePoint site with AI, right on your computer.  
-No data leaves your machine—everything runs locally! 🔒**
+A robust, production-ready SharePoint AI Assistant with comprehensive error handling, validation, and enterprise-grade features.
+
+## 🚀 Features
+
+### Core Functionality
+
+- **AI-Powered Chat Interface**: Natural language queries about SharePoint content
+- **Document Search & Preview**: Search and preview PDF, DOCX, and XLSX files
+- **SharePoint Integration**: Seamless connection to SharePoint Online
+- **File Management**: Download and analyze SharePoint documents
+
+### Enhanced Features
+
+- **Comprehensive Error Handling**: Robust error management with custom exceptions
+- **Input Validation & Security**: XSS protection and input sanitization
+- **Structured Logging**: Detailed logging with multiple levels and performance tracking
+- **Configuration Management**: Environment-based configuration with validation
+- **Modular Architecture**: Clean separation of concerns with proper abstractions
+- **Unit Testing**: Comprehensive test suite with pytest
+- **Docker Support**: Multi-stage Docker builds for production deployment
+
+## 📁 Project Structure
+
+```
+sharepoint-ai-assistant/
+├── src/                          # Main application source code
+│   ├── core/                     # Core functionality and configuration
+│   │   ├── __init__.py
+│   │   ├── config.py            # Configuration management
+│   │   ├── constants.py         # Application constants
+│   │   ├── exceptions.py        # Custom exception classes
+│   │   └── logging_config.py    # Logging configuration
+│   ├── clients/                  # External service clients
+│   │   ├── __init__.py
+│   │   └── sharepoint_client.py # Enhanced SharePoint client
+│   ├── services/                 # Business logic services
+│   │   ├── __init__.py
+│   │   └── llm_service.py       # LLM service with error handling
+│   ├── utils/                    # Utility functions
+│   │   ├── __init__.py
+│   │   ├── validation.py        # Input validation and security
+│   │   └── file_utils.py        # File processing utilities
+│   └── ui/                       # User interface
+│       ├── __init__.py
+│       └── main.py              # Enhanced Streamlit UI
+├── tests/                        # Test suite
+│   ├── unit/                     # Unit tests
+│   │   └── test_validation.py   # Validation tests
+│   └── integration/              # Integration tests
+├── requirements/                 # Dependency management
+│   ├── base.txt                 # Base requirements
+│   └── dev.txt                  # Development requirements
+├── logs/                         # Application logs
+├── data/                         # Data directory
+├── main.py                       # Application entry point
+├── Dockerfile                    # Enhanced Docker configuration
+├── docker-compose.yml           # Docker Compose setup
+└── README.md                     # This file
+```
+
+## 🛠️ Installation
+
+### Prerequisites
+
+- Python 3.9 or higher
+- Docker (optional, for containerized deployment)
+- Ollama (for local LLM support)
+
+### Local Development Setup
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/urdiales/sharepoint-ai-assistant.git
+   cd sharepoint-ai-assistant
+   ```
+
+2. **Create virtual environment**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements/dev.txt
+   ```
+
+4. **Set up environment variables**
+
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+5. **Run the application**
+   ```bash
+   streamlit run main.py
+   ```
+
+### Docker Deployment
+
+1. **Build the Docker image**
+
+   ```bash
+   docker build -t sharepoint-ai-assistant .
+   ```
+
+2. **Run with Docker Compose**
+   ```bash
+   docker-compose up -d
+   ```
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# SharePoint Configuration
+SHAREPOINT_SITE_URL=https://yourcompany.sharepoint.com/sites/yoursite
+SHAREPOINT_CLIENT_ID=your-client-id
+SHAREPOINT_CLIENT_SECRET=your-client-secret
+
+# LLM Configuration
+LLM_MODEL=llama2
+LLM_HOST=http://localhost:11434
+LLM_TEMPERATURE=0.7
+LLM_MAX_TOKENS=2048
+LLM_TIMEOUT=30
+
+# Logging Configuration
+LOG_LEVEL=INFO
+LOG_FORMAT=json
+LOG_FILE=logs/app.log
+
+# Security Configuration
+ENABLE_RATE_LIMITING=true
+MAX_REQUESTS_PER_MINUTE=60
+```
+
+### SharePoint App Registration
+
+1. **Register an app in Azure AD**
+
+   - Go to Azure Portal > App registrations
+   - Create a new registration
+   - Note the Application (client) ID
+
+2. **Configure API permissions**
+
+   - Add SharePoint permissions:
+     - `Sites.Read.All`
+     - `Sites.ReadWrite.All` (if write access needed)
+
+3. **Create client secret**
+   - Go to Certificates & secrets
+   - Create a new client secret
+   - Copy the secret value
+
+## 🧪 Testing
+
+### Run Unit Tests
+
+```bash
+pytest tests/unit/ -v
+```
+
+### Run Tests with Coverage
+
+```bash
+pytest tests/ --cov=src --cov-report=html
+```
+
+### Run Specific Test File
+
+```bash
+pytest tests/unit/test_validation.py -v
+```
+
+## 📊 Logging and Monitoring
+
+### Log Levels
+
+- **DEBUG**: Detailed diagnostic information
+- **INFO**: General application flow
+- **WARNING**: Potentially harmful situations
+- **ERROR**: Error events that allow application to continue
+- **CRITICAL**: Serious errors that may abort the program
+
+### Log Locations
+
+- **Console**: Real-time logging output
+- **File**: `logs/app.log` (configurable)
+- **Structured**: JSON format for log aggregation
+
+### Performance Monitoring
+
+The application includes built-in performance monitoring:
+
+- Function execution times
+- Memory usage tracking
+- API response times
+- Error rate monitoring
+
+## 🔒 Security Features
+
+### Input Validation
+
+- XSS protection with HTML sanitization
+- SQL injection prevention
+- File type validation
+- Size limit enforcement
+
+### Authentication
+
+- Secure credential handling
+- Environment-based configuration
+- No hardcoded secrets
+
+### Rate Limiting
+
+- Configurable request limits
+- Protection against abuse
+- Graceful degradation
+
+## 🚀 Deployment
+
+### Production Checklist
+
+- [ ] Environment variables configured
+- [ ] SharePoint app registered and permissions granted
+- [ ] Ollama service running (for local LLM)
+- [ ] Log directory writable
+- [ ] Health checks configured
+- [ ] Monitoring set up
+
+### Docker Production Deployment
+
+```bash
+# Build production image
+docker build -t sharepoint-ai-assistant:latest .
+
+# Run with production settings
+docker run -d \
+  --name sharepoint-ai-assistant \
+  -p 8501:8501 \
+  --env-file .env \
+  -v $(pwd)/logs:/app/logs \
+  sharepoint-ai-assistant:latest
+```
+
+### Kubernetes Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sharepoint-ai-assistant
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sharepoint-ai-assistant
+  template:
+    metadata:
+      labels:
+        app: sharepoint-ai-assistant
+    spec:
+      containers:
+        - name: app
+          image: sharepoint-ai-assistant:latest
+          ports:
+            - containerPort: 8501
+          env:
+            - name: SHAREPOINT_SITE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sharepoint-secrets
+                  key: site-url
+          # Add other environment variables
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **SharePoint Connection Failed**
+
+   - Verify client ID and secret
+   - Check app permissions in Azure AD
+   - Ensure site URL is correct
+
+2. **LLM Service Unavailable**
+
+   - Verify Ollama is running
+   - Check model is downloaded
+   - Verify host URL and port
+
+3. **File Preview Errors**
+   - Check file size limits
+   - Verify file type is supported
+   - Ensure sufficient memory
+
+### Debug Mode
+
+Enable debug logging:
+
+```bash
+export LOG_LEVEL=DEBUG
+streamlit run main.py
+```
+
+### Health Checks
+
+The application provides health check endpoints:
+
+- **Streamlit Health**: `http://localhost:8501/_stcore/health`
+- **Application Status**: Check logs for service status
+
+## 🤝 Contributing
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch
+3. Make changes with tests
+4. Run the test suite
+5. Submit a pull request
+
+### Code Standards
+
+- **Python**: Follow PEP 8
+- **Type Hints**: Use type annotations
+- **Documentation**: Docstrings for all functions
+- **Testing**: Unit tests for new features
+- **Logging**: Appropriate log levels
+
+### Pre-commit Hooks
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+### Documentation
+
+- [SharePoint API Documentation](https://docs.microsoft.com/en-us/sharepoint/dev/)
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [LangChain Documentation](https://python.langchain.com/)
+
+### Issues
+
+Report issues on [GitHub Issues](https://github.com/urdiales/sharepoint-ai-assistant/issues)
+
+### Community
+
+- [Discussions](https://github.com/urdiales/sharepoint-ai-assistant/discussions)
+- [Wiki](https://github.com/urdiales/sharepoint-ai-assistant/wiki)
+
+## 🎯 Roadmap
+
+### Version 2.0 (Planned)
+
+- [ ] Multi-tenant support
+- [ ] Advanced search with filters
+- [ ] Document summarization
+- [ ] Workflow automation
+- [ ] Mobile-responsive UI
+- [ ] API endpoints
+- [ ] Advanced analytics
+- [ ] Integration with Teams
+
+### Version 1.1 (In Progress)
+
+- [x] Enhanced error handling
+- [x] Comprehensive logging
+- [x] Input validation
+- [x] Unit testing framework
+- [x] Docker optimization
+- [ ] Performance improvements
+- [ ] Additional file formats
+- [ ] Caching layer
 
 ---
 
-## ✨ What does this app do?
-
-- 💬 Lets you ask questions about your SharePoint site and documents in plain English
-- 🧠 Uses a smart AI (runs locally!) to search, read, and answer your questions
-- 📊 Shows you documents, lists, and summaries—all in a friendly web interface
-
----
-
-## 📋 What you need before starting
-
-1. **💻 A computer with Docker Desktop installed**
-
-   - [Download Docker Desktop (Windows/Mac)](https://www.docker.com/products/docker-desktop/)
-   - If you're on Linux, you might already have Docker
-
-2. **🔑 Your SharePoint site details:**
-
-   - Site URL (looks like `https://yourcompany.sharepoint.com/sites/YourSiteName`)
-   - API Key and Secret (from your admin or SharePoint setup)
-
-3. **⏱️ A little patience!**
-   - The app will download the AI model the first time you run it (~5-10 minutes)
-
----
-
-## 🚀 How to set it up (Step by Step)
-
-### 1️⃣ Download the App Files
-
-**If the files are hosted on GitLab:**
-
-1. **📂 Go to the GitLab project page** (ask your admin for the link)
-2. **⬇️ Download the project:**
-   - Click the **"Download"** button (usually near the top right)
-   - Select **"Download zip"** from the dropdown menu
-   - Save the zip file to your computer (e.g., Downloads folder)
-3. **📁 Extract the files:**
-   - Right-click the downloaded zip file
-   - Select "Extract All" (Windows) or double-click (Mac)
-   - Choose where to extract (e.g., Desktop)
-   - You should now have a folder named something like `sharepoint-ai-assistant-main`
-
-**Alternative method using Git (if you have Git installed):**
-
-```
-git clone [GitLab-repository-URL]
-```
-
-**If you received the files another way:**
-
-- Download the folder with all the files (ask your admin or get the files from your team's link)
-- Put the folder anywhere on your computer (for example, on your Desktop)
-
-### 2️⃣ Add Your SharePoint Info
-
-- Find the file called `.env` in the folder  
-  If you don't see it, make a new file called `.env` (yes, it starts with a dot!)
-
-- Open `.env` with Notepad (Windows) or TextEdit (Mac)
-- Paste this in and fill out your details:
-
-```
-SHAREPOINT_SITE_URL=https://yourcompany.sharepoint.com/sites/YourSiteName
-SHAREPOINT_CLIENT_ID=your-api-key-here
-SHAREPOINT_CLIENT_SECRET=your-secret-here
-OLLAMA_HOST=http://ollama:11434
-```
-
-- **Save the file**
-
-### 3️⃣ Open a Terminal or Command Prompt
-
-**On Windows:**
-
-- Click Start, type "cmd", and hit Enter
-
-**On Mac:**
-
-- Open Spotlight (Cmd+Space), type "Terminal", and hit Enter
-
-Navigate to the folder where you put the app:  
-Example (if the folder is on your Desktop and named `sharepoint-ai-assistant`):
-
-```
-cd Desktop\sharepoint-ai-assistant
-```
-
-### 4️⃣ Start the App with Docker
-
-**⚠️ The first time will take a little longer—just let it finish!**
-
-Type:
-
-```
-docker compose up -d
-```
-
-- This will start the AI and the app
-- Wait for about 1-3 minutes on the first run
-
-### 5️⃣ Open the App in Your Browser
-
-- Open Chrome, Edge, or Safari
-- Go to: [http://localhost:8501](http://localhost:8501)
-
-### 6️⃣ Connect to SharePoint
-
-- You'll see the app in your browser
-- Enter your SharePoint Site URL, API Key, and Secret (from your `.env` file)
-- Click "Connect"
-- Now you can start asking questions about your SharePoint site! 🎉
-
-### 7️⃣ Stopping the App
-
-- When you're done, go back to your terminal and type:
-  ```
-  docker compose down
-  ```
-
----
-
-## ❓ Troubleshooting
-
-- **🔄 If you see "connection refused" or nothing loads:**  
-  Wait a bit longer—the AI model may still be downloading
-
-- **📝 If you mess up your `.env` file:**  
-  Just edit it and try again!
-
-- **🆘 If you need help:**  
-  Ask your admin or IT team
-
----
-
-## 🔒 Privacy & Security
-
-- This app **does not send your data to the cloud or any outside servers**
-- Everything runs locally on your computer
-- It's just for you—no one else can see your questions or answers
-
----
-
-## 📊 Quick Reference
-
-| Step | What you do | How                                                  |
-| ---- | ----------- | ---------------------------------------------------- |
-| 1    | Add details | Edit `.env`                                          |
-| 2    | Open folder | `cd ...`                                             |
-| 3    | Start app   | `docker compose up -d`                               |
-| 4    | Use browser | Go to [http://localhost:8501](http://localhost:8501) |
-| 5    | Stop app    | `docker compose down`                                |
-
----
-
-**That's it! 🎉 Enjoy your own local AI SharePoint Assistant.**
+**Built with ❤️ for the SharePoint community**

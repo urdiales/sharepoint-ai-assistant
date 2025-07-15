@@ -1,0 +1,43 @@
+# Core dependencies for SharePoint AI Assistant
+# Base requirements for all environments
+
+# Web Framework
+streamlit>=1.28.0
+
+# SharePoint Integration
+Office365-REST-Python-Client>=2.5.0
+
+# LLM and AI
+langchain>=0.0.350
+ollama>=0.1.7
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# File Processing
+pdfplumber>=0.9.0
+python-docx>=0.8.11
+openpyxl>=3.1.0
+
+# HTTP and Networking
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Environment and Configuration
+python-dotenv>=1.0.0
+
+# Logging and Monitoring
+structlog>=23.1.0
+
+# Date and Time
+python-dateutil>=2.8.0
+
+# Type Hints (for Python < 3.9)
+typing-extensions>=4.5.0
+
+# Security
+cryptography>=41.0.0
+
+# Utilities
+pathlib2>=2.3.7; python_version < "3.4"

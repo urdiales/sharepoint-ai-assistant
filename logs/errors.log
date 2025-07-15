@@ -1,0 +1,7 @@
+2025-07-15 00:39:27,372 - sharepoint_ai.config - ERROR - _load_configuration:74 - Failed to load configuration: [CONFIG_ERROR] Configuration error for 'OLLAMA_HOST': Invalid LLM host URL format: http://ollama:11434
+2025-07-15 00:40:29,753 - sharepoint_ai.config - ERROR - _load_configuration:74 - Failed to load configuration: [CONFIG_ERROR] Configuration error for 'OLLAMA_HOST': Invalid LLM host URL format: http://ollama:11434
+2025-07-15 01:17:46,132 - sharepoint_ai.ui - ERROR - display_error:84 - UI error: All connection fields are required
+2025-07-15 01:22:55,430 - sharepoint_ai.ui - ERROR - display_error:88 - UI error: All connection fields are required
+2025-07-15 01:23:22,605 - sharepoint_ai.ui - ERROR - display_error:88 - UI error: All connection fields are required
+2025-07-15 01:37:42,125 - sharepoint_ai.ui - ERROR - display_error:88 - UI error: All connection fields are required
+2025-07-15 01:37:47,113 - sharepoint_ai.ui - ERROR - display_error:88 - UI error: All connection fields are required
