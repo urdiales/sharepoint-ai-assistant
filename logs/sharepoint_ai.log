@@ -313,3 +313,17 @@
 2025-07-15 01:37:47,108 - sharepoint_ai.main - INFO - main:26 - Python version: 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]
 2025-07-15 01:37:47,108 - sharepoint_ai.main - INFO - main:27 - Working directory: D:\sharepoint-ai-assistant
 2025-07-15 01:37:47,113 - sharepoint_ai.ui - ERROR - display_error:88 - UI error: All connection fields are required
+2025-07-15 16:20:55,524 - sharepoint_ai - INFO - initialize_logging:203 - Logging system initialized successfully
+2025-07-15 16:20:55,527 - sharepoint_ai.config - INFO - _load_configuration:94 - Loading application configuration
+2025-07-15 16:20:55,527 - sharepoint_ai.config - WARNING - _load_sharepoint_config:115 - SharePoint site URL not configured
+2025-07-15 16:20:55,528 - sharepoint_ai.config - WARNING - _load_sharepoint_config:117 - SharePoint client ID not configured
+2025-07-15 16:20:55,528 - sharepoint_ai.config - WARNING - _load_sharepoint_config:119 - SharePoint client secret not configured
+2025-07-15 16:20:55,528 - sharepoint_ai.config - INFO - _get_default_ollama_host:246 - Detected local environment
+2025-07-15 16:20:55,562 - sharepoint_ai.config - INFO - _get_default_ollama_host:256 - Found working Ollama instance at: http://localhost:11434
+2025-07-15 16:20:55,564 - sharepoint_ai.config - INFO - _load_configuration:101 - Configuration loaded successfully
+2025-07-15 16:20:55,970 - numexpr.utils - INFO - _init_num_threads:148 - Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 16:20:55,970 - numexpr.utils - INFO - _init_num_threads:160 - NumExpr defaulting to 8 threads.
+2025-07-15 16:20:58,357 - sharepoint_ai.config - INFO - check_python_version:41 - Python version check passed: 3.12.7
+2025-07-15 16:20:58,358 - sharepoint_ai.main - INFO - main:29 - Starting SharePoint AI Assistant (Enhanced Version)
+2025-07-15 16:20:58,358 - sharepoint_ai.main - INFO - main:30 - Python version: 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]
+2025-07-15 16:20:58,358 - sharepoint_ai.main - INFO - main:31 - Working directory: D:\sharepoint-ai-assistant

@@ -1,9 +1,6 @@
 # Core dependencies for SharePoint AI Assistant
 # Base requirements for all environments
-
-# Python Version Requirement
 # Requires Python 3.11 or higher
-python_requires>=3.11
 
 # Web Framework
 streamlit>=1.28.0

@@ -13,22 +13,26 @@ sys.path.insert(0, str(src_path))
 
 try:
     from src.core import get_logger, setup_logging
+    from src.core.config import check_python_version
     from src.ui import main as ui_main
-    
+
     # Setup logging
     setup_logging()
     logger = get_logger("main")
-    
+
     def main():
         """Main application entry point."""
         try:
+            # Check Python version first
+            check_python_version()
+
             logger.info("Starting SharePoint AI Assistant (Enhanced Version)")
             logger.info(f"Python version: {sys.version}")
             logger.info(f"Working directory: {os.getcwd()}")
-            
+
             # Run the Streamlit UI
             ui_main()
-            
+
         except KeyboardInterrupt:
             logger.info("Application interrupted by user")
             sys.exit(0)
@@ -36,9 +40,10 @@ try:
             logger.critical(f"Critical error in main application: {e}")
             logger.critical(f"Exception type: {type(e).__name__}")
             import traceback
+
             logger.critical(f"Traceback: {traceback.format_exc()}")
             sys.exit(1)
-    
+
     if __name__ == "__main__":
         main()
 
