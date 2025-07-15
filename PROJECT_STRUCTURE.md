@@ -52,19 +52,37 @@ sharepoint-ai-assistant/
 
 ## 🚀 Quick Start
 
-1. **Run the application**:
+1. **Ensure Python 3.11 is installed**:
+
+   ```bash
+   python3.11 --version  # Should show Python 3.11.x
+   ```
+
+2. **Choose your environment setup method**:
+
+   - **Anaconda**: `conda create -n sharepoint-ai python=3.11 -y && conda activate sharepoint-ai`
+   - **UV**: `uv venv --python 3.11 && source .venv/bin/activate` (Linux/Mac) or `.venv\Scripts\activate` (Windows)
+   - **Traditional**: `python3.11 -m venv venv && source venv/bin/activate` (Linux/Mac) or `venv\Scripts\activate` (Windows)
+
+3. **Install dependencies**:
+
+   ```bash
+   pip install -r requirements/dev.txt
+   ```
+
+4. **Run the application**:
 
    ```bash
    streamlit run main.py
    ```
 
-2. **Edit Agent Prompt via UI**:
+5. **Edit Agent Prompt via UI**:
 
    - Connect to SharePoint
    - Look for "🤖 Agent Settings" in sidebar
    - Click "✏️ Edit Prompt"
 
-3. **Edit Agent Prompt via Code**:
+6. **Edit Agent Prompt via Code**:
    - Open `src/services/llm_service.py`
    - Find the `*** EDIT AGENT PROMPT HERE ***` section
    - Modify the `default_prompt` variable

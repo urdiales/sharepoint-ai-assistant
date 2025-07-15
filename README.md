@@ -60,47 +60,204 @@ sharepoint-ai-assistant/
 └── README.md                     # This file
 ```
 
-## 🛠️ Installation
+## 🛠️ Quick Start - Python Environment Setup
 
 ### Prerequisites
 
-- Python 3.9 or higher
-- Docker (optional, for containerized deployment)
+- **Python 3.11** (required)
+- Git
 - Ollama (for local LLM support)
+- Docker (optional, for containerized deployment)
 
-### Local Development Setup
+### ⚡ Simple Manual Setup (5 Steps)
 
-1. **Clone the repository**
+```bash
+# 1. Clone and navigate to the project
+git clone https://github.com/urdiales/sharepoint-ai-assistant.git
+cd sharepoint-ai-assistant
 
-   ```bash
-   git clone https://github.com/urdiales/sharepoint-ai-assistant.git
-   cd sharepoint-ai-assistant
-   ```
+# 2. Create Python 3.11 virtual environment
+python3.11 -m venv venv
 
-2. **Create virtual environment**
+# 3. Activate environment and install dependencies
+# Windows:
+venv\Scripts\activate && pip install -r requirements/dev.txt
+# macOS/Linux:
+source venv/bin/activate && pip install -r requirements/dev.txt
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+# 4. Set up configuration
+cp .env.example .env
+# Edit .env with your SharePoint credentials
 
-3. **Install dependencies**
+# 5. Run the application
+streamlit run main.py
+```
 
-   ```bash
-   pip install -r requirements/dev.txt
-   ```
+### 🚀 Super Quick Setup (Automated)
 
-4. **Set up environment variables**
+For the easiest setup experience, use our interactive setup script:
 
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/urdiales/sharepoint-ai-assistant.git
+cd sharepoint-ai-assistant
 
-5. **Run the application**
-   ```bash
-   streamlit run main.py
-   ```
+# Run the setup script
+python setup.py
+```
+
+The script will:
+
+- ✅ Check your Python version
+- 🔍 Detect available environment managers (Conda, UV, venv)
+- 📋 Guide you through setup options
+- ⚙️ Create your environment automatically
+- 📄 Copy configuration files
+
+### 🛠️ Manual Setup Options
+
+#### 🎯 Option A: Anaconda/Miniconda (Recommended for Beginners)
+
+**Step 1: Install Anaconda/Miniconda**
+
+- Download from [anaconda.com](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+**Step 2: Create and activate environment**
+
+```bash
+# Clone the repository
+git clone https://github.com/urdiales/sharepoint-ai-assistant.git
+cd sharepoint-ai-assistant
+
+# Create environment with Python 3.11
+conda create -n sharepoint-ai python=3.11 -y
+conda activate sharepoint-ai
+
+# Install dependencies
+pip install -r requirements/dev.txt
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# Run the application
+streamlit run main.py
+```
+
+#### ⚡ Option B: UV (Fast & Modern)
+
+**Step 1: Install UV**
+
+```bash
+# On Windows (PowerShell)
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# On macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Step 2: Set up project**
+
+```bash
+# Clone the repository
+git clone https://github.com/urdiales/sharepoint-ai-assistant.git
+cd sharepoint-ai-assistant
+
+# Create virtual environment with Python 3.11
+uv venv --python 3.11
+
+# Activate environment
+# On Windows:
+.venv\Scripts\activate
+# On macOS/Linux:
+source .venv/bin/activate
+
+# Install dependencies (lightning fast!)
+uv pip install -r requirements/dev.txt
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# Run the application
+streamlit run main.py
+```
+
+#### 🐍 Option C: Traditional Python venv
+
+**Step 1: Verify Python 3.11**
+
+```bash
+python3.11 --version  # Should show Python 3.11.x
+# If not available, install Python 3.11 from python.org
+```
+
+**Step 2: Set up project**
+
+```bash
+# Clone the repository
+git clone https://github.com/urdiales/sharepoint-ai-assistant.git
+cd sharepoint-ai-assistant
+
+# Create virtual environment
+python3.11 -m venv venv
+
+# Activate environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install -r requirements/dev.txt
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# Run the application
+streamlit run main.py
+```
+
+### 🔍 Quick Verification
+
+After setup, verify everything works:
+
+```bash
+# Check Python version
+python --version  # Should show Python 3.11.x
+
+# Test import of key dependencies
+python -c "import streamlit, pandas, langchain; print('✅ All dependencies installed successfully!')"
+
+# Check if Streamlit runs
+streamlit hello  # Should open Streamlit demo in browser
+```
+
+### 🚨 Troubleshooting
+
+**Common Issues:**
+
+1. **Python 3.11 not found**
+
+   - Install from [python.org](https://www.python.org/downloads/)
+   - On Ubuntu: `sudo apt install python3.11 python3.11-venv`
+   - On macOS with Homebrew: `brew install python@3.11`
+
+2. **Permission errors on Windows**
+
+   - Run terminal as Administrator
+   - Or use: `python -m pip install --user -r requirements/dev.txt`
+
+3. **Conda environment conflicts**
+
+   - Remove existing environment: `conda env remove -n sharepoint-ai`
+   - Create fresh environment
+
+4. **UV installation issues**
+   - Check [UV documentation](https://docs.astral.sh/uv/) for platform-specific instructions
+   - Alternative: Use pip in virtual environment
 
 ### Docker Deployment
 
