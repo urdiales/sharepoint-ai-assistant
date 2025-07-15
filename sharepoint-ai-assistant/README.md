@@ -75,6 +75,38 @@ OLLAMA_HOST=http://ollama:11434
 
 - **Save the file**
 
+#### 🔧 Alternative Ollama Configuration Options
+
+Choose the configuration that matches your setup:
+
+**1. 🐳 Using Docker Compose (Default - Most Common)**
+
+```
+OLLAMA_HOST=http://ollama:11434
+```
+
+**2. 🏠 If Ollama is Already Running on Your Computer**
+
+- You might already have Ollama running locally (not started by Docker Compose).
+- In this case, change your `.env` file:
+  - **🪟 On Windows or Mac:**
+    ```
+    OLLAMA_HOST=http://host.docker.internal:11434
+    ```
+  - **🐧 On Linux:**
+    ```
+    OLLAMA_HOST=http://127.0.0.1:11434
+    ```
+    or use your machine's local IP address.
+
+**3. 🌐 If Ollama is Running on Another Server**
+
+- Set the `.env` file to the correct address:
+  ```
+  OLLAMA_HOST=http://<server-ip>:11434
+  ```
+  Replace `<server-ip>` with the server's address.
+
 ### 3️⃣ Open a Terminal or Command Prompt
 
 **On Windows:**
@@ -133,6 +165,9 @@ docker compose up -d
 
 - **📝 If you mess up your `.env` file:**  
   Just edit it and try again!
+
+- **🔧 If you have Ollama connection issues:**  
+  Check your `OLLAMA_HOST` setting matches your setup (see configuration options above)
 
 - **🆘 If you need help:**  
   Ask your admin or IT team
