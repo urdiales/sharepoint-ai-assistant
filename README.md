@@ -1,25 +1,17 @@
-# SharePoint AI Assistant - Enhanced Version
+# SharePoint AI Assistant
 
-A robust, production-ready SharePoint AI Assistant with comprehensive error handling, validation, and enterprise-grade features.
+An intelligent assistant that transforms how you interact with SharePoint content through natural language conversations. Simply ask questions about your documents, and get instant, contextual answers powered by advanced AI.
 
-## 🚀 Features
+## ✨ What It Does
 
-### Core Functionality
+Transform your SharePoint experience with conversational AI that understands your content:
 
-- **AI-Powered Chat Interface**: Natural language queries about SharePoint content
-- **Document Search & Preview**: Search and preview PDF, DOCX, and XLSX files
-- **SharePoint Integration**: Seamless connection to SharePoint Online
-- **File Management**: Download and analyze SharePoint documents
+- **Natural Conversations**: Ask questions about your SharePoint documents in plain English
+- **Smart Document Discovery**: Find relevant files across your SharePoint sites effortlessly
+- **Instant Previews**: View and analyze PDF, Word, and Excel files without leaving the chat
+- **Contextual Answers**: Get precise responses based on your actual document content
 
-### Enhanced Features
-
-- **Comprehensive Error Handling**: Robust error management with custom exceptions
-- **Input Validation & Security**: XSS protection and input sanitization
-- **Structured Logging**: Detailed logging with multiple levels and performance tracking
-- **Configuration Management**: Environment-based configuration with validation
-- **Modular Architecture**: Clean separation of concerns with proper abstractions
-- **Unit Testing**: Comprehensive test suite with pytest
-- **Docker Support**: Multi-stage Docker builds for production deployment
+Built for reliability with enterprise-grade security, comprehensive error handling, and production-ready architecture that scales with your organization's needs.
 
 ## 📁 Project Structure
 
